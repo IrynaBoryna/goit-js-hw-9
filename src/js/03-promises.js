@@ -23,16 +23,14 @@ formRef.addEventListener("input", (evt) => {
    console.log(step);
    console.log(amount);
 
+   btnRef.addEventListener("submit", inputDateRmove());
 
    for ( let i = 0; i < amount; i++) {
     position = i + 1;
     delay = delay + i * step;
-     createPromise(position, delay),
-     inputDateRmove()
+     createPromise(position, delay)
     }
     
-
-btnRef.addEventListener("submit", inputDateRmove());
 
     function inputDateRmove() {
         
@@ -55,7 +53,7 @@ btnRef.addEventListener("submit", inputDateRmove());
     })
     
 
-     promise.race([])
+     promise.race()
     .then(({ position , delay }) => {
         console.log(`✅ Fulfilled promise ${position} in ${delay}`);
       })
