@@ -20,14 +20,14 @@ formRef.addEventListener("input", (evt) => {
     let delay = Number(saveDate.delay);
     let step = Number(saveDate.step);
    let amount = Number(saveDate.amount);
-  //  console.log(delay);
-  //  console.log(step);
-  //  console.log(amount);
+   console.log(delay);
+   console.log(step);
+   console.log(amount);
 
    btnRef.addEventListener("submit", inputDateRmove());
 
    for ( let i = 0; i < amount; i++) {
-    position = i + 1;
+   let position = i + 1;
     delay = delay + i * step;
      createPromise(position, delay)
     }
