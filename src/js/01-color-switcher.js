@@ -3,7 +3,7 @@ const startBtn = document.querySelector('button[data-start]');
 const stopBtn = document.querySelector('button[data-stop]');
 const bodyRef = document.querySelector('body');
 
-let timerId = null;
+let intervalId = null;
 
 startBtn.addEventListener("click", () => {
 
