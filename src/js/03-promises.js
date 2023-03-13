@@ -32,14 +32,12 @@ formRef.addEventListener("input", (evt) => {
    let position = i + 1;
     delay = delay + i * step;
     createPromise(position, delay)
-      .then((position, delay) => {
-        resolve()
-        // console.log(`✅ Fulfilled promise ${position} in ${delay}ms`);
-      })
-      .catch((position, delay) => {
-        reject()
-        // console.log(`❌ Rejected promise ${position} in ${delay}ms`);
-      });
+      // .then(({ position, delay }) => {
+      //   console.log(`✅ Fulfilled promise ${position} in ${delay}ms`);
+      // })
+      // .catch(({ position, delay }) => {
+      //   console.log(`❌ Rejected promise ${position} in ${delay}ms`);
+      // });
     
     }
    
@@ -62,22 +60,23 @@ formRef.addEventListener("input", (evt) => {
    
     })
   }
+
   // createPromise(position, delay)
-  //     .then(({ position, delay }) => {
-  //       Notify.success(`✅ Fulfilled promise ${position} in ${delay}ms`);
-  //     })
-  //     .catch(({ position, delay }) => {
-  //       Notify.failure(`❌ Rejected promise ${position} in ${delay}ms`);
-  //     });
+  // .then(({ position, delay }) => {
+  //   console.log(`✅ Fulfilled promise ${position} in ${delay}ms`);
+  // })
+  // .catch(({ position, delay }) => {
+  //   console.log(`❌ Rejected promise ${position} in ${delay}ms`);
+  // });
 
   
-    // promise.race(position, delay)
-    // .then(({ position, delay }) => {
-    //   Notify.success(`✅  {position: ${position}, delay: ${delay}}`);
-    // })
-    // .catch(({ position, delay }) => {
-    //   Notify.failure(`❌ {position: ${position}, delay: ${delay}}`);
-    // });
+    promise.race(position, delay)
+    .then(({ position, delay }) => {
+      Notify.success(`✅  {position: ${position}, delay: ${delay}}`);
+    })
+    .catch(({ position, delay }) => {
+      Notify.failure(`❌ {position: ${position}, delay: ${delay}}`);
+    });
 
   
 
