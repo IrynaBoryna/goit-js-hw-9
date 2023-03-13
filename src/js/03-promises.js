@@ -5,11 +5,11 @@ import { Notify } from 'notiflix/build/notiflix-notify-aio';
   //  const delayRef = formRef.frstElementChild;
   //  const amountRef = btnRef.previousElementSibiling;
   
-  let inputDate = {};
+  let inputDate = {delay: '0', step: '0', amount: '0'};
   let STORAGE_KEY = 'KEY';
-  let delay = null;
-  let step = null;
-  let amount = null;
+  // let delay = 0;
+  // let step = 0;
+  // let amount = 0;
 
 formRef.addEventListener("input", (evt) => {
   evt.preventDefault();
