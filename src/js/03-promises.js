@@ -5,7 +5,7 @@ import { Notify } from 'notiflix/build/notiflix-notify-aio';
   //  const delayRef = formRef.frstElementChild;
   //  const amountRef = btnRef.previousElementSibiling;
   
-  let inputDate = {delay: '0', step: '0', amount: '0'};
+  const inputDate = {};
   let STORAGE_KEY = 'KEY';
   // let delay = 0;
   // let step = 0;
@@ -19,9 +19,9 @@ formRef.addEventListener("input", (evt) => {
    
    const saveDate = JSON.parse(localStorage.getItem(STORAGE_KEY));
     
-     delay = Number(saveDate.delay);
-     step = Number(saveDate.step);
-    amount = Number(saveDate.amount);
+    let  delay = Number(saveDate.delay);
+    let  step = Number(saveDate.step);
+    let amount = Number(saveDate.amount);
    console.log(delay);
    console.log(step);
    console.log(amount);
@@ -70,13 +70,13 @@ formRef.addEventListener("input", (evt) => {
   // });
 
   
-    promise.race(position, delay)
-    .then(({ position, delay }) => {
-      Notify.success(`✅  {position: ${position}, delay: ${delay}}`);
-    })
-    .catch(({ position, delay }) => {
-      Notify.failure(`❌ {position: ${position}, delay: ${delay}}`);
-    });
+    // promise.race(position, delay)
+    // .then(({ position, delay }) => {
+    //   Notify.success(`✅  {position: ${position}, delay: ${delay}}`);
+    // })
+    // .catch(({ position, delay }) => {
+    //   Notify.failure(`❌ {position: ${position}, delay: ${delay}}`);
+    // });
 
   
 
