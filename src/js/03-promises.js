@@ -1,3 +1,4 @@
+import { Notify } from 'notiflix/build/notiflix-notify-aio';
 
  const formRef = document.querySelector('.form');
  const btnRef = document.querySelector('button');
@@ -19,9 +20,9 @@ formRef.addEventListener("input", (evt) => {
     let delay = Number(saveDate.delay);
     let step = Number(saveDate.step);
    let amount = Number(saveDate.amount);
-   console.log(delay);
-   console.log(step);
-   console.log(amount);
+  //  console.log(delay);
+  //  console.log(step);
+  //  console.log(amount);
 
    btnRef.addEventListener("submit", inputDateRmove());
 
@@ -30,8 +31,7 @@ formRef.addEventListener("input", (evt) => {
     delay = delay + i * step;
      createPromise(position, delay)
     }
-    
-
+   
     function inputDateRmove() {
         
       localStorage.removeItem(STORAGE_KEY);
@@ -45,26 +45,54 @@ formRef.addEventListener("input", (evt) => {
     setTimeout(() => {
 
     if (shouldResolve) {
-      resolve(console.log(`✅{position: ${position} , delay: ${delay}}`));
+      resolve(Notify.success(`✅  {position: ${position}, delay: ${delay}}`));
     } else {
-      reject(console.log(`❌ {position: ${position} , delay: ${delay}}`));
+      reject(Notify.failure(`❌ {position: ${position}, delay: ${delay}}`));
    }  }, delay);
    
     })
-    
-
-     promise.race()
-    .then(({ position , delay }) => {
-        console.log(`✅ Fulfilled promise ${position} in ${delay}`);
-      })
-      .catch(({ position, delay }) => {
-        console.log(`❌ Rejected promise ${position} in ${delay}`)
-      });
-   
-    }
-
-    
   
+    promise.race(position, delay)
+    .then(({ position, delay }) => {
+      Notify.success(`✅  {position: ${position}, delay: ${delay}}`);
+    })
+    .catch(({ position, delay }) => {
+      Notify.failure(`❌ {position: ${position}, delay: ${delay}}`);
+    });
+
+  }
+
+
+  // let  positions = [];
+  // const promises = positions.map(createPromise) ;
+  // console.log(promises);
+    
+
+    //  promises.race(positions)
+    // .then(({ position , delay }) => {
+    //   Notify.success(`✅ Fulfilled promise ${position} in ${delay}`);
+    //   })
+    //   .catch(({ position, delay }) => {
+    //     Notify.failure(`❌ Rejected promise ${position} in ${delay}`)
+    //   });
+   
+    
+
+      // function createPromise(position, delay) {
+      //   const shouldResolve = Math.random() > 0.3;
+      //   if (shouldResolve) {
+      //     // Fulfill
+      //   } else {
+      //     // Reject
+      //   }
+      // }
+      // createPromise(position, delay)
+      // .then(({ position, delay }) => {
+      //   console.log(`✅ Fulfilled promise ${position} in ${delay}ms`);
+      // })
+      // .catch(({ position, delay }) => {
+      //   console.log(`❌ Rejected promise ${position} in ${delay}ms`);
+      // });
 
 
   

@@ -5,7 +5,7 @@ import "flatpickr/dist/flatpickr.min.css";
 // let currentDate = null;
 
 
-
+import { Report } from 'notiflix/build/notiflix-report-aio';
 class ReversCount {
     #intervalID = null;
     #onChangeCallback  = ()  => {};
@@ -67,7 +67,7 @@ const fp = flatpickr(myInput, {
     
        onClose(selectedDates) { 
         if(new Date(selectedDates).getTime() <= new Date().getTime()) {
-            window.alert("Please choose a date in the future");
+            Report.failure("Please choose a date in the future");
             startBtn.disabled = true;
             // reversCount.stop();
        } else {
