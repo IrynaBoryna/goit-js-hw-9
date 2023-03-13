@@ -10,10 +10,10 @@ startBtn.addEventListener("click", () => {
   intervalId = setInterval(() => { bodyRef.style.backgroundColor = getRandomHexColor();
     console.log(`colorChange:  ${getRandomHexColor()}`);
      startBtn.disabled = true;
-    //  stopBtn.disabled = false;
+     stopBtn.disabled = false;
         }, 1000);
         // startBtn.disabled = true;
-     stopBtn.disabled = false;
+    //  stopBtn.disabled = false;
 });
 
 stopBtn.addEventListener("click", () => {
