@@ -14,13 +14,13 @@ import { Notify } from 'notiflix/build/notiflix-notify-aio';
 formRef.addEventListener("input", (evt) => {
   evt.preventDefault();
   inputDate[evt.target.name] = evt.target.value;
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(inputDate));
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(inputDate));
     });
    
    const saveDate = JSON.parse(localStorage.getItem(STORAGE_KEY));
     
-    let  delay = Number(saveDate.delay);
-    let  step = Number(saveDate.step);
+     let delay = Number(saveDate.delay);
+     let step = Number(saveDate.step);
     let amount = Number(saveDate.amount);
    console.log(delay);
    console.log(step);
@@ -31,13 +31,13 @@ formRef.addEventListener("input", (evt) => {
    for ( let i = 0; i < amount; i++) {
    let position = i + 1;
     delay = delay + i * step;
-    createPromise(position, delay)
-      // .then(({ position, delay }) => {
-      //   console.log(`✅ Fulfilled promise ${position} in ${delay}ms`);
-      // })
-      // .catch(({ position, delay }) => {
-      //   console.log(`❌ Rejected promise ${position} in ${delay}ms`);
-      // });
+    createPromise(position, delay) 
+    .then(( position, delay ) => {
+      value => Notify.success(value);
+  })
+  .catch(( position, delay ) => {
+    error => Notify.failure(error);
+  });
     
     }
    
@@ -61,22 +61,10 @@ formRef.addEventListener("input", (evt) => {
     })
   }
 
-  // createPromise(position, delay)
-  // .then(({ position, delay }) => {
-  //   console.log(`✅ Fulfilled promise ${position} in ${delay}ms`);
-  // })
-  // .catch(({ position, delay }) => {
-  //   console.log(`❌ Rejected promise ${position} in ${delay}ms`);
-  // });
-
   
-    // promise.race(position, delay)
-    // .then(({ position, delay }) => {
-    //   Notify.success(`✅  {position: ${position}, delay: ${delay}}`);
-    // })
-    // .catch(({ position, delay }) => {
-    //   Notify.failure(`❌ {position: ${position}, delay: ${delay}}`);
-    // });
+
+
+    
 
   
 
@@ -84,22 +72,3 @@ formRef.addEventListener("input", (evt) => {
   
    
     
-
-      // function createPromise(position, delay) {
-      //   const shouldResolve = Math.random() > 0.3;
-      //   if (shouldResolve) {
-      //     // Fulfill
-      //   } else {
-      //     // Reject
-      //   }
-      // }
-      // createPromise(position, delay)
-      // .then(({ position, delay }) => {
-      //   console.log(`✅ Fulfilled promise ${position} in ${delay}ms`);
-      // })
-      // .catch(({ position, delay }) => {
-      //   console.log(`❌ Rejected promise ${position} in ${delay}ms`);
-      // });
-
-
-  
