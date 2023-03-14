@@ -30,7 +30,7 @@ formRef.addEventListener("input", (evt) => {
 
    for ( let i = 0; i < amount; i++) {
    let position = i + 1;
-    delay = delay + i * step;
+    delay = delay + step;
     createPromise(position, delay) 
     .then(( position, delay ) => {
       value => Notify.success(value);
