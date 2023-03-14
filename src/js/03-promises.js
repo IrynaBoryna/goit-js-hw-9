@@ -19,9 +19,9 @@ formRef.addEventListener("input", (evt) => {
    
    const saveDate = JSON.parse(localStorage.getItem(STORAGE_KEY));
     
-     let delay = Number(saveDate.delay);
-     let step = Number(saveDate.step);
-    let amount = Number(saveDate.amount);
+     let delay = Number(saveDate?.delay);
+     let step = Number(saveDate?.step);
+    let amount = Number(saveDate?.amount);
    console.log(delay);
    console.log(step);
    console.log(amount);
@@ -43,7 +43,7 @@ formRef.addEventListener("input", (evt) => {
    
     function inputDateRmove() {
       localStorage.removeItem(STORAGE_KEY);
-     };
+         };
 
     function createPromise(position, delay) {
 
